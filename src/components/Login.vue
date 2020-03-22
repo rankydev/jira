@@ -10,7 +10,9 @@
               label="Password"
               required
             ></v-text-field>
-            <v-btn class="center" @click="submit">Login</v-btn>
+            <v-btn x-large block class="center primary mt-4" @click="submit"
+              >Login</v-btn
+            >
           </v-form>
         </v-col>
       </v-row>
@@ -19,7 +21,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    submit() {
+      console.log("hello");
+    }
+  }
+};
 </script>
 
 <style lang="scss"></style>
