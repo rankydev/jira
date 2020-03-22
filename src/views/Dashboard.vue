@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import ProjectOverview from '../components/ProjectOverview';
+import ProjectOverview from "../components/ProjectOverview";
 
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   components: {
     ProjectOverview
   },
@@ -21,5 +21,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss"></style>

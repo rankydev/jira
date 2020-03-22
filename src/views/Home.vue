@@ -38,6 +38,7 @@
                   <div class="sign-up text-center grey--text text--lighten-1">
                     <button
                       class="grey--text px-8 py-2 justify-center align-center mx-auto google-button"
+                      @click="googleSignup"
                     >
                       <span class="mr-4">
                         <img
@@ -88,6 +89,19 @@ export default {
     return {
       notRegistered: false
     };
+  },
+  computed: {
+    user() {
+      return this.$store.getters.getUser;
+    }
+  },
+  methods: {
+    googleSignup() {
+      console.log("hello");
+    }
+  },
+  mounted() {
+    console.log(this.user);
   }
 };
 </script>
