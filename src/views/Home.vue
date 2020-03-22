@@ -3,15 +3,69 @@
     <div class="hero">
       <div class="hero-inner pa-4">
         <v-card class="d-flex justify-space-between elevation-20">
-          <div class="hero-left pa-4  ">
-            <h1 class="display-2 blue--text text--lighten-1 text-center">
-              Welcome to JIBBO
-            </h1>
-            <p class="title blue--text text--lighten-3 text-center">
-              Your Jira Dashboard
-            </p>
+          <div class="hero-left pa-4">
+            <div class="hero-left-inner">
+              <h1 class="display-2 blue--text text--lighten-1 text-center">
+                Welcome to JIBBO
+              </h1>
+              <p class="title blue--text text--lighten-3 text-center">
+                Your Jira Dashboard
+              </p>
+              <div class="user-interaction register" v-if="notRegistered">
+                <register />
 
-            <login />
+                <div class="user-info text-center">
+                  <v-btn
+                    icon
+                    @click="notRegistered = false"
+                    class="blue--text text--lighten text-center button"
+                  >
+                    <v-icon class="mr-2">mdi-arrow-left</v-icon>
+                    <span class="text">
+                      Back To Login
+                    </span>
+                  </v-btn>
+                </div>
+              </div>
+
+              <div class="user-interaction login" v-else>
+                <login />
+
+                <div class="user-info text-center grey--text text--lighten-1">
+                  <p class="text my-4">
+                    Not registered yet?
+                  </p>
+                  <div class="sign-up text-center grey--text text--lighten-1">
+                    <button
+                      class="grey--text px-8 py-2 justify-center align-center mx-auto google-button"
+                    >
+                      <span class="mr-4">
+                        <img
+                          src="@/assets/google-icon.png"
+                          class="google-icon-image"
+                        />
+                      </span>
+                      <span class="text">Sign in with Google</span>
+                    </button>
+                  </div>
+                  <p class="text my-4">
+                    or
+                  </p>
+                  <div class="blue--text text--lighten-3 text-center">
+                    <v-btn
+                      icon
+                      @click="notRegistered = true"
+                      class="blue--text text--lighten text-center button"
+                    >
+                      <span class="text">
+                        Register
+                      </span>
+                      <v-icon class="login ml-2">mdi-arrow-right</v-icon>
+                    </v-btn>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="hero-right"></div>
         </v-card>
@@ -22,11 +76,18 @@
 
 <script>
 import Login from "../components/Login";
+import Register from "../components/Register";
 
 export default {
   name: "Home",
   components: {
-    Login
+    Login,
+    Register
+  },
+  data() {
+    return {
+      notRegistered: false
+    };
   }
 };
 </script>
@@ -57,6 +118,13 @@ export default {
 
 .hero-left {
   background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.hero-left-inner {
+  height: auto;
+  width: 100%;
 }
 
 .hero-right {
@@ -64,5 +132,41 @@ export default {
   height: auto;
   background-size: cover;
   background-position: center;
+}
+
+.v-btn:before {
+  background-color: #fff;
+  display: none;
+}
+
+.button {
+  &:hover {
+    .v-btn__content {
+      color: lighten(#2196f3, 20%);
+    }
+  }
+
+  .v-ripple__container {
+    display: none;
+  }
+}
+
+.user-info {
+  margin-top: auto;
+}
+
+.google-icon-image {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.google-button {
+  display: flex;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  }
 }
 </style>
