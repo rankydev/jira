@@ -4,14 +4,13 @@
 
 <script>
 export default {
-  name: 'ProjectOverview',
-  mounted(){
+  name: "ProjectOverview",
+  mounted() {
     this.fetchProjects();
   },
   methods: {
     fetchProjects() {
-      const url = 'https://jira.towa-digital.com/rest/api/latest/project';
-      const 
+      // const url = "https://jira.towa-digital.com/rest/api/latest/project";
     }
   }
 };
